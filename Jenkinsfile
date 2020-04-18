@@ -1,5 +1,10 @@
 pipeline {
-   agent { docker 'maven:3.6.3-ibmjava-8-alpine' }
+
+agent {
+    docker {
+        image 'maven:3.6.3-ibmjava-8-alpine'
+        args '-v $HOME/.m2:/root/.m2'
+           }
    stages {
       stage('checkout') {
          steps {
